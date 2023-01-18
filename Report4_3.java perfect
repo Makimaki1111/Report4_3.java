@@ -1,0 +1,137 @@
+import java.util.Scanner;
+
+public class Report4_3 {
+    public static void main(String args[]) {
+        Scanner stdIn = new Scanner(System.in);
+
+        boolean tyouhuku = false;
+        boolean tyouhuku_u = false;
+        int count = 0;
+        int a = 0;
+
+        System.out.println("a(5桁) × b(5桁) の計算をします。");
+        do {
+            System.out.print("aの1万の位を入力してください。:");
+            a = stdIn.nextInt();
+        } while (a < 1 || a > 9);
+
+        System.out.print("表示する式の個数を入力してください。(全て表示する場合は0):");
+        int num = stdIn.nextInt();
+
+        if (num == 0) {
+            num = 1000000000;
+        }
+
+        for (int b = 0; b <= 9; b++) {
+            for (int c = 0; c <= 9; c++) {
+                for (int d = 0; d <= 9; d++) {
+                    for (int e = 0; e <= 9; e++) {
+                        for (int f = 1; f <= 9; f++) {
+                            for (int g = 0; g <= 9; g++) {
+                                for (int h = 0; h <= 9; h++) {
+                                    for (int i = 0; i <= 9; i++) {
+                                        for (int j = 0; j <= 9; j++) {
+                                            int sahen1 = 10000 * a + 1000 * b + 100 * c + 10 * d + e;
+                                            int sahen2 = 10000 * f + 1000 * g + 100 * h + 10 * i + j;
+                                            long uhen = sahen1 * sahen2;
+                                            if (uhen < 10000000000L && uhen > 1000000000) {
+                                                int[] x = new int[10];
+                                                x[0] = a;
+                                                x[1] = b;
+                                                x[2] = c;
+                                                x[3] = d;
+                                                x[4] = e;
+                                                x[5] = f;
+                                                x[6] = g;
+                                                x[7] = h;
+                                                x[8] = i;
+                                                x[9] = j;
+
+                                                for (int k = 0; k <= 8; k++) {
+                                                    for (int l = k + 1; l <= 9; l++) {
+                                                        if (x[k] == x[l] && !tyouhuku) {
+                                                            tyouhuku = true;
+                                                        }
+                                                    }
+                                                }
+
+                                                long aa = (uhen / 1000000000) % 10;
+                                                long bb = (uhen / 100000000) % 10;
+                                                long cc = (uhen / 10000000) % 10;
+                                                long dd = (uhen / 1000000) % 10;
+                                                long ee = (uhen / 100000) % 10;
+                                                long ff = (uhen / 10000) % 10;
+                                                long gg = (uhen / 1000) % 10;
+                                                long hh = (uhen / 100) % 10;
+                                                long ii = (uhen / 10) % 10;
+                                                long jj = uhen % 10;
+
+                                                long[] y = new long[10];
+                                                y[0] = aa;
+                                                y[1] = bb;
+                                                y[2] = cc;
+                                                y[3] = dd;
+                                                y[4] = ee;
+                                                y[5] = ff;
+                                                y[6] = gg;
+                                                y[7] = hh;
+                                                y[8] = ii;
+                                                y[9] = jj;
+
+                                                for (int m = 0; m <= 8; m++) {
+                                                    for (int n = m + 1; n <= 9; n++) {
+                                                        if (y[m] == y[n] && !tyouhuku_u) {
+                                                            tyouhuku_u = true;
+                                                        }
+                                                    }
+                                                }
+
+                                                if (!tyouhuku && !tyouhuku_u) {
+                                                    System.out
+                                                            .println(sahen1 + " * " + sahen2 + " = " + sahen1 * sahen2);
+                                                    count += 1;
+                                                }
+                                                tyouhuku = false;
+                                                tyouhuku_u = false;
+
+                                                if (count == num) {
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        if (count == num) {
+                                            break;
+                                        }
+                                    }
+                                    if (count == num) {
+                                        break;
+                                    }
+                                }
+                                if (count == num) {
+                                    break;
+                                }
+                            }
+                            if (count == num) {
+                                break;
+                            }
+                        }
+                        if (count == num) {
+                            break;
+                        }
+                    }
+                    if (count == num) {
+                        break;
+                    }
+                }
+                if (count == num) {
+                    break;
+                }
+            }
+            if (count == num) {
+                break;
+            }
+        }
+        System.out.println("終了：全部で" + count + "個");
+        stdIn.close();
+    }
+}
